@@ -14,4 +14,15 @@ public class UserSqlProvider implements ProviderMethodResolver {
       }}.toString();
   }
 
+    public static String findByAll (){
+        return new SQL(){{
+            SELECT (" *");
+            FROM ("user")  ;
+        }}.toString();
+    }
+
+
+
+
+
 }
