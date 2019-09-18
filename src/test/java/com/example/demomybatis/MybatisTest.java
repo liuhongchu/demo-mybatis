@@ -1,7 +1,6 @@
 package com.example.demomybatis;
-
-import com.example.demomybatis.entity.User;
-import com.example.demomybatis.mapper.UserMapper;
+import com.example.demomybatis.system.entity.SystemUser;
+import com.example.demomybatis.system.mapper.TestUserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -30,14 +29,14 @@ public class MybatisTest {
             // 获取SqlSession
             SqlSession session = sqlSessionFactory.openSession();
             //获取Mapper
-            UserMapper userMapper = session.getMapper(UserMapper.class);
+            TestUserMapper userMapper = session.getMapper(TestUserMapper.class);
             //创建一个对象，set 一个值
-            User user = new User();
-            user.setId(1);
+            SystemUser systmemUser = new SystemUser();
+            systmemUser.setUserId((long) 1);
             //通过查询 传入一个对象接受，查询id等于1 的 数据
-            User user1 = userMapper.selectById(user);
+            systmemUser = userMapper.selectById(systmemUser);
             //打印一下
-            System.out.println("id：" + user1.getId() + "名字：" + user1.getName());
+            System.out.println("id：" + systmemUser.getUserId() + "名字：" + systmemUser.getUserName());
 
         } catch (IOException e) {
             e.printStackTrace();
